@@ -50,6 +50,28 @@ if %ERRORLEVEL%==0 (
     echo Test Git : ECHEC
 )
 
+:: ==========================
+:: Installation de node 22.19.0
+:: ==========================
+
+echo Verification de nodejs...
+where node >nul 2>nul
+if %ERRORLEVEL%==0 (
+    echo node est deja installe.
+) else (
+    echo Telechargement et installation de nodejs...
+    powershell -Command "nvm install 22.19.0"
+    powershell -Command "nvm use 22.19.0"
+)
+
+::test node
+node --version >nul 2>nul
+if %ERRORLEVEL%==0 (
+    echo Test node : OK
+) else (
+    echo Test node : ECHEC
+)
+
 echo.
 echo Installation terminee.
 pause
